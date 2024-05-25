@@ -4,10 +4,10 @@
 <summary>Index</summary>
 
 ## Index
-* DSA
+* Introduction
+* Big O
 * Time Complexity
 * Space Complexity
-* Big O
 * Optimization
 
 </details>
@@ -15,12 +15,57 @@
 ---
 
 <details>
-<summary>DSA</summary>
+<summary>Introduction</summary>
 
-## DSA
-__DSA__ stands for __Data Structures & Algorithms__.
+## Introduction
+* __DSA__ stands for __Data Structures & Algorithms__.
+* DSA decides which approach is better.
+* Data Structures allow us to store and organize data efficiently, We can easily access and perform operations on the data.
+* Algorithm is the process to achieve a desired result.
 
-Run the application with Less Memory and Less Time.
+![DSA](./Assets/01-dsa-basics/01-dsa.png)
+
+### Why DSA ?
+* DSA makes you a better Software Engineer.
+* with DSA, we can run the application with Less Memory and Less Time.
+
+
+### Data Structures
+1. String & Array
+2. Linked List
+3. Stack & Queue
+4. Trees
+5. Heaps
+6. Graphs
+
+### Algorithms
+1. Sorting
+    * Bubble
+    * Selection
+    * Insertion
+    * Merge
+    * Quick
+    * Random Quick
+    * Counting
+    * Radix
+2. Searching
+    * Linear
+    * Binary
+    * DFS: Depth-First Search - on Graph data structure
+    * BFS: Breadth-First Search - on Graph data structure
+
+
+</details>
+
+---
+
+<details>
+<summary>Big O</summary>
+
+## Big O
+Analyze the cost of an algorithm.
+We can calculate the time complexity and space complexity by using __Big O__ notation.
+* Space & Time complexity
 
 </details>
 
@@ -252,17 +297,6 @@ console.log("Fibonacci of 6:", fibonacci(6));
 How much memory take to execute the code is called __Space__ Complexity.
 
 Space COmplexity  : Less Memory
-
-</details>
-
----
-
-<details>
-<summary>Big O</summary>
-
-## Big O
-Analyze the cost of an algorithm.
-We can calculate the time complexity by using __Big O__ notation.
 
 </details>
 
