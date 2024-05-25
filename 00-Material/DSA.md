@@ -5,10 +5,10 @@
 
 ## Index
 * Introduction
+* Optimization
 * Big O
 * Time Complexity
 * Space Complexity
-* Optimization
 
 </details>
 
@@ -23,7 +23,7 @@
 * Data Structures allow us to store and organize data efficiently, We can easily access and perform operations on the data.
 * Algorithm is the process to achieve a desired result.
 
-![DSA](./Assets/01-dsa-basics/01-dsa.png)
+![DSA](./Assets/00-dsa-basics/01-dsa.png)
 
 ### Why DSA ?
 * DSA makes you a better Software Engineer.
@@ -59,6 +59,37 @@
 ---
 
 <details>
+<summary>Optimization</summary>
+
+## Optimization
+
+Steps : 
+1. First Write Code in production
+2. Think About Algorithm
+
+### Example
+Find the sum of the first n natural numbers.
+
+```js
+    const n = 100000000000
+    let sum = 0;
+    for (let i=1; i<=n; i++) {
+        sum += i;
+    }
+    console.log(sum)
+```
+
+```js
+    const n = 100000000000
+    let sum = n * (n+1)/2
+    console.log(sum)
+```
+
+</details>
+
+---
+
+<details>
 <summary>Big O</summary>
 
 ## Big O
@@ -66,6 +97,8 @@ Analyze the cost of an algorithm.
 We can calculate the time complexity and space complexity by using __Big O__ notation.
 * Space & Time complexity
 
+`Time to run code = number of instructions * time to execute each instruction`
+The number of instructions depends on the code you used, and the time taken to execute each code depends on your machine and compiler.
 </details>
 
 ---
@@ -151,47 +184,6 @@ Linear time complexity means that as the size of the input increases, the runtim
 
 ### Quadratic Time (O(n^2))
 Quadratic time complexity means that as the size of the input increases, the runtime of the algorithm grows quadratically.
-
-   ```js
-    // Bubble Sort
-   const bubbleSort = arr => {
-       const len = arr.length;
-       for (let i = 0; i < len; i++) {
-           for (let j = 0; j < len - 1; j++) {
-                // O(n^2)
-               if (arr[j] > arr[j + 1]) {
-                   const temp = arr[j];
-                   arr[j] = arr[j + 1];
-                   arr[j + 1] = temp;
-               }
-           }
-       }
-       return arr;
-   };
-   ```
-
-   ```js
-    // Selection Sort
-   const selectionSort = arr => {
-       const len = arr.length;
-       for (let i = 0; i < len - 1; i++) {
-           let minIndex = i;
-           for (let j = i + 1; j < len; j++) {
-                // O(n^2)
-               if (arr[j] < arr[minIndex]) {
-                   minIndex = j;
-               }
-           }
-           if (minIndex !== i) {
-               const temp = arr[i];
-               arr[i] = arr[minIndex];
-               arr[minIndex] = temp;
-           }
-       }
-       return arr;
-   };
-   ```
-
 
    ```js
     // Nested Loops
@@ -302,13 +294,82 @@ Space COmplexity  : Less Memory
 ---
 
 <details>
-<summary>Optimization</summary>
+<summary>Sorting</summary>
 
-## Optimization
+## Sorting
+* Bubble
+* Selection
+* Insertion
+* Merge
+* Quick
+* Random Quick
+* Counting
+* Radix
 
-Steps : 
-1. First Write Code in production
-2. Think About Algorithm
+### Bubble Sort
+* Data Structure : Array
+* Algorithm : Bubble Sort
+
+Bubble sort compares adjacent elements in a list, swapping them if they're in the wrong order, repeating until everything is sorted.
+
+<video src="./Assets/02-sorting/01-bubble-sort.mp4" controls></video>
+
+```js 
+unordered array
+
+for loop to run length of array:
+    for loop to run length of array:
+       // O(n^2)
+        if current element > next element:
+            Swap their positions
+
+print the output
+```
+
+### Selection Sort
+* Data Structure: Array
+* Algorithm: Selection Sort
+
+ It repeatedly selects the smallest element from the unsorted part and swaps it with the element at the beginning of the unsorted part. This process continues until the entire list is sorted. The algorithm has a time complexity of O(n^2).
+
+<video src="./Assets/02-sorting/02-selection-sort.mp4" controls></video>
+
+```js
+Unordered array
+
+for loop to run length of array:
+    take small_number_index from parent for loop
+    for loop to run length of array:
+        // O(n^2)
+        if parent loop number is greater than child loop number:
+            update small_number_index to child loop number index
+    Swap their positions
+
+print the output
+```
+
+### Insertion Sort
+* Data Structure: Array
+* Algorithm: Insertion Sort
+Insertion sort iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
+
+<video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
+
+```js
+Unordered array
+
+for loop to run length of array:
+    save the current element as small_number
+    for loop to run backwards length of the array:
+        // O(n^2)
+        if small_number < current element in the sorted portion:
+            move the current element one position to the left
+        else:
+        break the loop
+
+print the output
+```
+
 </details>
 
 ---
