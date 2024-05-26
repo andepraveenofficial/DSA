@@ -29,7 +29,6 @@
 * DSA makes you a better Software Engineer.
 * with DSA, we can run the application with Less Memory and Less Time.
 
-
 ### Data Structures
 1. String & Array
 2. Linked List
@@ -370,6 +369,44 @@ for loop to run length of array:
 print the output
 ```
 
+### Quick Sort
+* Data Structure: Array
+* Algorithm: Quick Sort
+Quick Sort selects a pivot, divides the array into smaller and larger elements, recursively sorts these partitions, and combines them with the pivot to obtain a sorted array.
+
+<video src="./Assets/02-sorting/04-quick-sort.mp4" controls></video>
+
+```js
+Unordered array
+
+recursive function with arr as parameter:
+  if arr length <= 1:
+        return arr
+
+  Choose a pivot element from the array (typically the first element)
+
+  leftArray
+  rigghtArray
+  eaquaArray
+
+  for loop to run length of array:
+    - values less than the pivot are placed to the leftArray
+    - values greater than the pivot are placed to the rightArray
+
+  Recursively apply Quick Sort to the left and right subarrays
+
+  Combine the sorted subarrays to form the final sorted array
+
+
+call the quickSort with arr as parameter
+print the output
+```
 </details>
 
 ---
+
+<details>
+<summary>Searching</summary>
+
+## Searching
+</details>
