@@ -9,7 +9,8 @@
 * Big O
 * Time Complexity
 * Space Complexity
-
+* Sorting
+* Searching
 </details>
 
 ---
@@ -42,8 +43,8 @@
     * Bubble
     * Selection
     * Insertion
-    * Merge
     * Quick
+    * Merge
     * Random Quick
     * Counting
     * Radix
@@ -73,6 +74,7 @@ Find the sum of the first n natural numbers.
     const n = 100000000000
     let sum = 0;
     for (let i=1; i<=n; i++) {
+        // O(n)
         sum += i;
     }
     console.log(sum)
@@ -80,7 +82,7 @@ Find the sum of the first n natural numbers.
 
 ```js
     const n = 100000000000
-    let sum = n * (n+1)/2
+    let sum = n * (n+1)/2  // O(1)
     console.log(sum)
 ```
 
@@ -97,6 +99,7 @@ We can calculate the time complexity and space complexity by using __Big O__ not
 * Space & Time complexity
 
 `Time to run code = number of instructions * time to execute each instruction`
+
 The number of instructions depends on the code you used, and the time taken to execute each code depends on your machine and compiler.
 </details>
 
@@ -163,23 +166,14 @@ Linear time complexity means that as the size of the input increases, the runtim
 
 ```js
 // Array Traverse
-   const numbers = [1, 2, 3, 4, 5];
-   for (let i = 0; i < numbers.length; i++) {
-       console.log(numbers[i]); // O(n)
+   const arr = [1, 2, 3, 4, 5];
+   for (let i = 0; i < arr.length; i++) {
+        // O(n)
+       console.log(arr[i]); 
    }
 ```
 
-```js
-// Linear Search
-   const array = [4, 2, 7, 1, 9];
-   const target = 7;
-   for (let i = 0; i < array.length; i++) {
-       if (array[i] === target) {
-           console.log("Element found at index:", i);
-           break;
-       }
-   }
-   ```
+
 
 ### Quadratic Time (O(n^2))
 Quadratic time complexity means that as the size of the input increases, the runtime of the algorithm grows quadratically.
@@ -350,6 +344,7 @@ print the output
 ### Insertion Sort
 * Data Structure: Array
 * Algorithm: Insertion Sort
+
 Insertion sort iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
 
 <video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
@@ -392,11 +387,11 @@ recursive function with arr as parameter:
   for loop to run length of array:
     - values less than the pivot are placed to the leftArray
     - values greater than the pivot are placed to the rightArray
+    - values equal to the pivot are placed to the equalArray
 
   Recursively apply Quick Sort to the left and right subarrays
 
   Combine the sorted subarrays to form the final sorted array
-
 
 call the quickSort with arr as parameter
 print the output
@@ -409,4 +404,53 @@ print the output
 <summary>Searching</summary>
 
 ## Searching
+* Linear 
+* Binary
+
+### Linear
+* Data Structure: Array
+* Algorithm: Linear Search
+
+Linear search checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
+
+```js 
+Unordered array
+target value
+
+for loop to run length of array:
+    if found the target value:
+        print the output
+        break the loop
+```
+
+### Binary
+* Data Structure: Array
+* Algorithm: Binary Search
+
+Binary search quickly finds a target value in a sorted array by repeatedly dividing the search range in half and checking the middle element, reducing the search area each time. This method is much faster than linear search.
+
+
+```js
+ordered array
+target value
+
+
+leftIndex
+rightIndex
+midIndex
+
+while to run upto midValue equals to target:
+    if target equal to midValue:
+        print the output
+        break the loop
+    
+    if target is lower than midValue:
+        update rightIndex to midIndex
+    else target is greater than midValue: 
+        update leftIndex to midIndex   
+
+    update midIndex
+```
 </details>
+
+---
