@@ -10,7 +10,7 @@
 * Time Complexity
 * Space Complexity
 * Sorting
-* Searching
+- Searching
 </details>
 
 ---
@@ -68,7 +68,7 @@ Steps :
 2. Think About Algorithm
 
 ### Example
-Find the sum of the first n natural numbers.
+Task : Find the sum of the first n natural numbers.
 
 ```js
     const n = 100000000000
@@ -94,13 +94,12 @@ Find the sum of the first n natural numbers.
 <summary>Big O</summary>
 
 ## Big O
-Analyze the cost of an algorithm.
-We can calculate the time complexity and space complexity by using __Big O__ notation.
+* Analyze the cost of an algorithm.
+* We can calculate the time complexity and space complexity by using __Big O__ notation.
 * Space & Time complexity
+* `Time to run code = number of instructions * time to execute each instruction`
+* The number of instructions depends on the code you used, and the time taken to execute each code depends on your machine and compiler.
 
-`Time to run code = number of instructions * time to execute each instruction`
-
-The number of instructions depends on the code you used, and the time taken to execute each code depends on your machine and compiler.
 </details>
 
 ---
@@ -173,8 +172,6 @@ Linear time complexity means that as the size of the input increases, the runtim
    }
 ```
 
-
-
 ### Quadratic Time (O(n^2))
 Quadratic time complexity means that as the size of the input increases, the runtime of the algorithm grows quadratically.
 
@@ -191,31 +188,6 @@ Quadratic time complexity means that as the size of the input increases, the run
 
 ### Binary Search
 Binary search has a time complexity of O(log n). This means that as the size of the input increases, the runtime of the algorithm grows logarithmically.
-
-
-```js
-// Binary Search
-const binarySearch = (arr, target) => {
-    let low = 0;
-    let high = arr.length - 1;
-    while (low <= high) {
-        // O(log n)
-        const mid = Math.floor((low + high) / 2);
-        if (arr[mid] === target) {
-            return mid;
-        } else if (arr[mid] < target) {
-            low = mid + 1;
-        } else {
-            high = mid - 1;
-        }
-    }
-    return -1; // Element not found
-};
-
-const sortedArray = [1, 3, 5, 7, 9];
-const targetElement = 5;
-console.log("Index of", targetElement, ":", binarySearch(sortedArray, targetElement));
-```
 
 ## O(n log n) (Sorting)
 Sorting algorithms with O(n log n) time complexity are significantly faster than quadratic time sorting algorithms, especially for large datasets.
@@ -278,9 +250,8 @@ console.log("Fibonacci of 6:", fibonacci(6));
 <summary>Space Complexity</summary>
 
 ## Space 
-How much memory take to execute the code is called __Space__ Complexity.
-
-Space COmplexity  : Less Memory
+* How much memory take to execute the code is called __Space__ Complexity.
+* Space COmplexity  : Less Memory
 
 </details>
 
