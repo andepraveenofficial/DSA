@@ -10,7 +10,7 @@
 * Time Complexity
 * Space Complexity
 * Sorting
-- Searching
+* Searching
 </details>
 
 ---
@@ -20,9 +20,9 @@
 
 ## Introduction
 * __DSA__ stands for __Data Structures & Algorithms__.
-* DSA decides which approach is better.
+* DSA helps find the best way to solve a problem.
 * Data Structures allow us to store and organize data efficiently, We can easily access and perform operations on the data.
-* Algorithm is the process to achieve a desired result.
+* Algorithms are the step-by-step processes used to achieve a desired result.
 
 ![DSA](./Assets/00-dsa-basics/01-dsa.png)
 
@@ -44,15 +44,9 @@
     * Selection
     * Insertion
     * Quick
-    * Merge
-    * Random Quick
-    * Counting
-    * Radix
 2. Searching
     * Linear
     * Binary
-    * DFS: Depth-First Search - on Graph data structure
-    * BFS: Breadth-First Search - on Graph data structure
 
 </details>
 
@@ -64,11 +58,15 @@
 ## Optimization
 
 Steps : 
-1. First Write Code in production
-2. Think About Algorithm
+1. First, write the code for production.
+2. Then, think about optimizing the algorithm.
 
 ### Example
 Task : Find the sum of the first n natural numbers.
+
+### Initial Approach
+* Algorithm : __for-loop__
+* Time Complexity: __O(n)__
 
 ```js
     const n = 100000000000
@@ -79,6 +77,10 @@ Task : Find the sum of the first n natural numbers.
     }
     console.log(sum)
 ```
+
+### Optimized Approach
+* Algorithm : __Mathematical formula__
+* Time Complexity: __O(1)__
 
 ```js
     const n = 100000000000
@@ -94,11 +96,10 @@ Task : Find the sum of the first n natural numbers.
 <summary>Big O</summary>
 
 ## Big O
-* Analyze the cost of an algorithm.
-* We can calculate the time complexity and space complexity by using __Big O__ notation.
-* Space & Time complexity
-* `Time to run code = number of instructions * time to execute each instruction`
-* The number of instructions depends on the code you used, and the time taken to execute each code depends on your machine and compiler.
+* __Big O__ notation helps us understand how algorithms perform by checking their efficiency.
+* We can calculate the __Time complexity__ and __Space complexity__ by using __Big O__ notation.
+* Time complexity tells us how the runtime of an algorithm changes with a larger input.
+* Space complexity tells us how much memory the algorithm uses with a larger input.
 
 </details>
 
@@ -108,20 +109,20 @@ Task : Find the sum of the first n natural numbers.
 <summary>Time Complexity</summary>
 
 ##  Time Complexity
-Time Complexity is not a actual time taken by the algorithm. 
-Its depending on Operating system like window, mac os...etc.
+* Time complexity tells us how the runtime of an algorithm changes with a larger input.
+* Its depending on Operating system like window, mac os...etc.
 
-Time Complexity -> Less Time -> Decrease the Number of Operations
+`Time Complexity -> Less Time -> Decrease the Number of Operations`
 
 1. Constant Time 
 2. Linear Time
 3. Quadratic Time
-4. Binary 
+4. Logarithmic Time
 5. Sorting 
 6. Recursion
 
-### Constant Time (O(1))
-Constant time complexity means that irrespective of the size of the input, the algorithm's runtime remains constant.
+### Constant Time __O(1)__
+Constant time complexity means that the algorithm always takes the same amount of time to run, irrespective of the input size.
 
 ```js 
 // 01 Arithmetic Operations -> +, -, *, /, %
@@ -141,11 +142,11 @@ const name = person.name; // O(1)
 
 // Array
 const colors = ["red", "green", "blue"];
-const firstColor = colors[0]; // O(1)
+const firstColor = colors[2]; // O(1)
 
 // String 
 const message = "Hello"; 
-const firstChar = message[0]; // O(1)
+const firstChar = message[2]; // O(1)
 
 
 // 06 calculate Length
@@ -158,75 +159,52 @@ const arrayLength = numbers.length; // O(1)
      const greeting = "Welcome"; 
      const stringLength = greeting.length; // O(1)
 
+// 07 Mathematical Formula
+// sum of n natural numbers (1-100)
+const n = 1000;
+const sum = n(n+1)/2 // O(1)
 ```
 
-### Linear Time (O(n))
-Linear time complexity means that as the size of the input increases, the runtime of the algorithm grows linearly.
+### Linear Time __O(n)__
+Linear time complexity means that as the input size increases, the algorithm's runtime also increases in a linear manner.
 
 ```js
 // Array Traverse
    const arr = [1, 2, 3, 4, 5];
-   for (let i = 0; i < arr.length; i++) {
+   for (let i=0; i<arr.length; i++) {
         // O(n)
        console.log(arr[i]); 
    }
 ```
 
-### Quadratic Time (O(n^2))
-Quadratic time complexity means that as the size of the input increases, the runtime of the algorithm grows quadratically.
+### Quadratic Time __O(n^2)__
+Quadratic time complexity means that as the input size increases, the runtime of the algorithm grows quadratically.
+
+Quadratically : n input size
+* [1] -> (1*1)  -> 1 Iterations
+* [1,2] -> (2*2) -> 4 Iterations
+* [1,2,3] -> (3*3) -> 9 Iterations
 
    ```js
     // Nested Loops
-   const printPairs = arr => {
-       for (let i = 0; i < arr.length; i++) {
-           for (let j = 0; j < arr.length; j++) {
+    const arr = [1,2,3];
+
+    for (let i=0; i<arr.length; i++) {
+           for (let j=0; j<arr.length; j++) {
+            // O(n^2)
                console.log(arr[i], arr[j]);
            }
        }
-   };
+
    ```
 
-### Binary Search
-Binary search has a time complexity of O(log n). This means that as the size of the input increases, the runtime of the algorithm grows logarithmically.
+### Logarithmic Time
+Logarithmic Time means that as the input size increases, the runtime of the algorithm grows logarithmically.
+* Binary search ->  O(log n).
+* Merge Sort -> O(n log n)
 
-## O(n log n) (Sorting)
-Sorting algorithms with O(n log n) time complexity are significantly faster than quadratic time sorting algorithms, especially for large datasets.
-
-```js
-// MergeSort
-const mergeSort = arr => {
-    if (arr.length <= 1) {
-        return arr;
-    }
-
-    const middle = Math.floor(arr.length / 2);
-    const left = arr.slice(0, middle);
-    const right = arr.slice(middle);
-
-    const merge = (left, right) => {
-        let result = [];
-        let leftIndex = 0;
-        let rightIndex = 0;
-
-        while (leftIndex < left.length && rightIndex < right.length) {
-            if (left[leftIndex] < right[rightIndex]) {
-                result.push(left[leftIndex]);
-                leftIndex++;
-            } else {
-                result.push(right[rightIndex]);
-                rightIndex++;
-            }
-        }
-
-        return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
-    };
-
-    return merge(mergeSort(left), mergeSort(right));
-};
-
-const unsortedArray = [6, 2, 7, 1, 4, 9, 3, 8, 5];
-console.log("Sorted Array:", mergeSort(unsortedArray));
-```
+logarithmically : 
+* 1 -> 0
 
 ### Recursion
 Recursion with a time complexity of O(2^n) results in exponential growth in execution time with the input size.
