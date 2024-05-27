@@ -101,6 +101,7 @@ Task : Find the sum of the first n natural numbers.
 * Time complexity tells us how the runtime of an algorithm changes with a larger input.
 * Space complexity tells us how much memory the algorithm uses with a larger input.
 
+![Big O](./Assets/03-Big-O/01-bigO-graph.png)
 </details>
 
 ---
@@ -200,24 +201,33 @@ Quadratically : n input size
 
 ### Logarithmic Time
 Logarithmic Time means that as the input size increases, the runtime of the algorithm grows logarithmically.
-* Binary search ->  O(log n).
-* Merge Sort -> O(n log n)
+* Binary search ->  O(log_2 n) -> log base2 n 
+* Merge Sort -> O(n log n) -> n * log n -> n * log base2 n
 
 logarithmically : 
-* 1 -> 0
+
+```shell
+ log_2 1 = 0 because 2^0 = 1
+ log_2 2 = 1 because 2^1 = 2
+ log_2 4 = 2 because 2^2 = 4
+ log_2 8 = 3 because 2^3 = 8 -> 2*2*2
+```
 
 ### Recursion
-Recursion with a time complexity of O(2^n) results in exponential growth in execution time with the input size.
+ it means that as the size of the input increases, the time it takes to run the function grows exponentially.
+* Time Complexity : 2^n 
+
 ```js
-// Fibonacci
-const fibonacci = n => {
+// Factorial
+function factorial(n) {
     if (n <= 1) {
-        return n;
+        return 1;
     }
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    return n * factorial(n - 1);
 };
 
-console.log("Fibonacci of 6:", fibonacci(6));
+const result = factorial(5);
+console.log(result);
 ```
 
 </details>
@@ -251,6 +261,10 @@ console.log("Fibonacci of 6:", fibonacci(6));
 ### Bubble Sort
 * Data Structure : Array
 * Algorithm : Bubble Sort
+* Time Complexity
+    - Worst: O(n^2)
+    - Average: O(n^2)
+    - Best: O(n) -> when the array is already sorted
 
 Bubble sort compares adjacent elements in a list, swapping them if they're in the wrong order, repeating until everything is sorted.
 
@@ -271,6 +285,10 @@ print the output
 ### Selection Sort
 * Data Structure: Array
 * Algorithm: Selection Sort
+* Time Complexity
+    - Worst: O(n^2)
+    - Average: O(n^2)
+    - Best: O(n^2)
 
  It repeatedly selects the smallest element from the unsorted part and swaps it with the element at the beginning of the unsorted part. This process continues until the entire list is sorted. The algorithm has a time complexity of O(n^2).
 
@@ -293,6 +311,10 @@ print the output
 ### Insertion Sort
 * Data Structure: Array
 * Algorithm: Insertion Sort
+* Time Complexity
+    - Worst: O(n^2)
+    - Average: O(n^2)
+    - Best: O(n) -> when the array is already sorted
 
 Insertion sort iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
 
@@ -316,6 +338,11 @@ print the output
 ### Quick Sort
 * Data Structure: Array
 * Algorithm: Quick Sort
+* Time Complexity
+    - Worst: O(n^2)
+    - Average: O(n log n)
+    - Best: O(n log n) 
+
 Quick Sort selects a pivot, divides the array into smaller and larger elements, recursively sorts these partitions, and combines them with the pivot to obtain a sorted array.
 
 <video src="./Assets/02-sorting/04-quick-sort.mp4" controls></video>
@@ -359,6 +386,10 @@ print the output
 ### Linear
 * Data Structure: Array
 * Algorithm: Linear Search
+* Time Complexity
+    - Worst : O(n)
+    - Average : O(n)
+    - Best: O(1) -> when the target element is found at the beginning of the array.
 
 Linear search checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
 
@@ -375,6 +406,10 @@ for loop to run length of array:
 ### Binary
 * Data Structure: Array
 * Algorithm: Binary Search
+* Time Complexity : 
+    - Worst : O(log n)
+    - Average : O(log n)
+    - Best : O(1) when the target element is found at the middle of the array.
 
 Binary search quickly finds a target value in a sorted array by repeatedly dividing the search range in half and checking the middle element, reducing the search area each time. This method is much faster than linear search.
 
@@ -382,7 +417,6 @@ Binary search quickly finds a target value in a sorted array by repeatedly divid
 ```js
 ordered array
 target value
-
 
 leftIndex
 rightIndex
