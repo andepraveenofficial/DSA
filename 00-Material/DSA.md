@@ -11,6 +11,7 @@
 * Space Complexity
 * Sorting
 * Searching
+* Stack
 </details>
 
 ---
@@ -239,7 +240,7 @@ console.log(result);
 
 ## Space 
 * How much memory take to execute the code is called __Space__ Complexity.
-* Space COmplexity  : Less Memory
+* Space Complexity  : Less Memory
 
 </details>
 
@@ -267,6 +268,9 @@ console.log(result);
     - Best: O(n) -> when the array is already sorted
 
 Bubble sort compares adjacent elements in a list, swapping them if they're in the wrong order, repeating until everything is sorted.
+* Placing the 1st largest element at correct position.
+
+![Bubble Sort](./Assets/02-sorting/sorting-images/01-bubble-sort.png)
 
 <video src="./Assets/02-sorting/01-bubble-sort.mp4" controls></video>
 
@@ -292,6 +296,8 @@ print the output
 
  It repeatedly selects the smallest element from the unsorted part and swaps it with the element at the beginning of the unsorted part. This process continues until the entire list is sorted. The algorithm has a time complexity of O(n^2).
 
+![Selection Sort](./Assets/02-sorting/sorting-images/02-selection-sort.png)
+
 <video src="./Assets/02-sorting/02-selection-sort.mp4" controls></video>
 
 ```js
@@ -316,7 +322,9 @@ print the output
     - Average: O(n^2)
     - Best: O(n) -> when the array is already sorted
 
-Insertion sort iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
+Insertion sort (move to backward direction) iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
+
+![Insertion Sort](./Assets/02-sorting/sorting-images/03-insertion-sort.webp)
 
 <video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
 
@@ -344,6 +352,8 @@ print the output
     - Best: O(n log n) 
 
 Quick Sort selects a pivot, divides the array into smaller and larger elements, recursively sorts these partitions, and combines them with the pivot to obtain a sorted array.
+
+![Quick Sort](./Assets/02-sorting/sorting-images/04-quick-sort.png)
 
 <video src="./Assets/02-sorting/04-quick-sort.mp4" controls></video>
 
@@ -437,3 +447,77 @@ while to run upto midValue equals to target:
 </details>
 
 ---
+
+<details>
+<summary>Stack</summary>
+
+## Stack
+A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle.
+*  LIFO : Last In First Out
+
+![Stack](./Assets/04-stack/01-stack.png)
+
+### Example
+* Pushing an element onto the stack is like adding a new plate on top.
+* Popping an element removes the top plate from the stack.
+
+### Operations
+* Push: Adds an element to the top of the stack.
+* Pop: Removes the top element from the stack.
+* Peek: Returns the top element without removing it.
+* IsEmpty: Checks if the stack is empty.
+* IsFull: Checks if the stack is full (in case of fixed-size arrays).
+
+</details>
+
+---
+
+<details>
+ <summary>Queue</summary>
+
+  ## Queue
+  A queue can be defined as an ordered list which enables insert operations to be performed at one end called REAR and delete operations to be performed at another end called FRONT.
+ A queue is a data structure in which whatever comes first will go out first
+* FIFO : First In First Out
+  ![Queue](./Assets/05-queue/01-queue.png)
+  ![Queue vs Stack](./Assets/05-queue/02-queue-vs-stack.png)
+
+### Methods
+* Enqueue (Insert): Adds an element to the rear of the queue.
+* Dequeue (Delete): Removes and returns the element from the front of the queue.
+* Peek: Returns the element at the front of the queue without removing it.
+* Empty: Checks if the queue is empty.
+* Full: Checks if the queue is full.
+
+</details>
+
+---
+
+<details>
+<summary>LinkedList</summary>
+
+## LinedList
+A linked list is a linear data structure which can store a collection of "nodes" connected together via links . A node consists of the data and next (address of the next node). 
+
+* we no need to assign a memory in advance.
+* Dynamic memory allocation
+
+![Linked List](./Assets/06-linked-list/01-linkedlist.png)
+
+![Linked List](./Assets/06-linked-list/02-linked-list.png)
+
+
+### Types of Linked Lists
+* Singly Linked List: Each node points to the next node in the sequence.
+* Doubly Linked List: Each node has two references, one to the next node and one to the previous node.
+* Circular Linked List: The last node points back to the first node, forming a circle.
+
+
+### Basic Structure of Node
+In a singly linked list, each node typically has two components
+* Data: The value stored in the node.
+* Next: A reference to the next node in the list.
+
+
+
+</details>
