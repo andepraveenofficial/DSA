@@ -9,9 +9,11 @@
 * Big O
 * Time Complexity
 * Space Complexity
-* Sorting
-* Searching
+* Arrays
 * Stack
+* Queue
+* Linked List
+
 </details>
 
 ---
@@ -23,7 +25,7 @@
 * __DSA__ stands for __Data Structures & Algorithms__.
 * DSA helps find the best way to solve a problem.
 * Data Structures allow us to store and organize data efficiently, We can easily access and perform operations on the data.
-* Algorithms are the step-by-step processes used to achieve a desired result.
+* Algorithm is the step-by-step process used to achieve a desired result.
 
 ![DSA](./Assets/00-dsa-basics/01-dsa.png)
 
@@ -32,12 +34,10 @@
 * with DSA, we can run the application with Less Memory and Less Time.
 
 ### Data Structures
-1. String & Array
-2. Linked List
-3. Stack & Queue
-4. Trees
-5. Heaps
-6. Graphs
+1. Array
+2. Stack 
+3. Queue
+4. Linked List
 
 ### Algorithms
 1. Sorting
@@ -65,12 +65,12 @@ Steps :
 ### Example
 Task : Find the sum of the first n natural numbers.
 
-### Initial Approach
+#### Initial Approach
 * Algorithm : __for-loop__
 * Time Complexity: __O(n)__
 
 ```js
-    const n = 100000000000
+    const n = 10000000
     let sum = 0;
     for (let i=1; i<=n; i++) {
         // O(n)
@@ -79,12 +79,12 @@ Task : Find the sum of the first n natural numbers.
     console.log(sum)
 ```
 
-### Optimized Approach
+#### Optimized Approach
 * Algorithm : __Mathematical formula__
 * Time Complexity: __O(1)__
 
 ```js
-    const n = 100000000000
+    const n = 10000000
     let sum = n * (n+1)/2  // O(1)
     console.log(sum)
 ```
@@ -172,11 +172,13 @@ Linear time complexity means that as the input size increases, the algorithm's r
 
 ```js
 // Array Traverse
-   const arr = [1, 2, 3, 4, 5];
-   for (let i=0; i<arr.length; i++) {
-        // O(n)
-       console.log(arr[i]); 
-   }
+
+const arr = [1, 2, 3, 4, 5];
+let total = 0;
+for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+}
+console.log(total); 
 ```
 
 ### Quadratic Time __O(n^2)__
@@ -189,8 +191,8 @@ Quadratically : n input size
 
    ```js
     // Nested Loops
-    const arr = [1,2,3];
 
+    const arr = [1, 2, 3, 4, 5];
     for (let i=0; i<arr.length; i++) {
            for (let j=0; j<arr.length; j++) {
             // O(n^2)
@@ -216,7 +218,7 @@ logarithmically :
 
 ### Recursion
  it means that as the size of the input increases, the time it takes to run the function grows exponentially.
-* Time Complexity : 2^n 
+* Time Complexity : `2^n` 
 
 ```js
 // Factorial
@@ -247,25 +249,23 @@ console.log(result);
 ---
 
 <details>
-<summary>Sorting</summary>
+<summary>Arrays</summary>
 
-## Sorting
+## Arrays
+
+### Sorting
 * Bubble
-* Selection
 * Insertion
-* Merge
+* Selection
 * Quick
-* Random Quick
-* Counting
-* Radix
 
-### Bubble Sort
+#### Bubble Sort
 * Data Structure : Array
 * Algorithm : Bubble Sort
 * Time Complexity
-    - Worst: O(n^2)
-    - Average: O(n^2)
-    - Best: O(n) -> when the array is already sorted
+    - Worst: __O(n^2)__
+    - Average: __O(n^2)__
+    - Best: __O(n)__ -> when the array is already sorted
 
 Bubble sort compares adjacent elements in a list, swapping them if they're in the wrong order, repeating until everything is sorted.
 * Placing the 1st largest element at correct position.
@@ -275,16 +275,508 @@ Bubble sort compares adjacent elements in a list, swapping them if they're in th
 <video src="./Assets/02-sorting/01-bubble-sort.mp4" controls></video>
 
 ```js 
-unordered array
+const arr = [2,1,5,8,4,3,7,6];
 
-for loop to run length of array:
-    for loop to run length of array:
-       // O(n^2)
-        if current element > next element:
-            Swap their positions
+for (let i=0; i<arr.length; i++){
+    let isSorted = true;
+    for (let j=0; j<arr.length-1; j++){
+        // O(n^2)
+        if (arr[j] > arr[j+1]){
+            isSorted = false;
+            [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+        }
+    }
 
-print the output
+    if (isSorted){
+        break;
+    }
+}
+
+console.log(arr);  // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+
+
 ```
+
+#### Insertion Sort
+* Data Structure: Array
+* Algorithm: Insertion Sort
+* Time Complexity
+    - Worst: __O(n^2)__
+    - Average: __O(n^2)__
+    - Best: __O(n)__ -> when the array is already sorted
+
+Insertion sort (move to backward direction) iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
+
+![Insertion Sort](./Assets/02-sorting/sorting-images/03-insertion-sort.webp)
+
+<video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
+
+```js
+const arr = [2,1,5,8,4,3,7,6];
+
+for (let i=0; i<arr.length; i++){
+    const item = arr[i];
+    let j = i-1;
+
+   while (j >= 0 && item < arr[j]){
+    // O(n)
+        arr[j+1] = arr[j];
+        console.log(arr);
+        j--
+   }
+
+   arr[j+1] = item;
+}
+
+console.log(arr);  // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+```
+
+### Searching
+* Linear Search
+* Binary Search
+
+#### Linear Search
+* Data Structure: Array
+* Algorithm: Linear Search
+* Time Complexity
+    - Worst : __O(n)__
+    - Average : __O(n)__
+    - Best: __O(1) -> when the target element is found at the beginning of the array.
+
+Linear search checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
+
+```js 
+const arr = [2,1,5,8,4,3,7,6];
+const target = 3;
+
+let output = null;
+for (let i=0; i<arr.length; i++){
+    // O(n)
+    if (arr[i] === target){
+        output = i;
+        break;
+    }
+}
+
+console.log("Element found at index: " + output);  // Element found at index: 5
+```
+
+#### Binary Search
+* Data Structure: Array
+* Algorithm: Binary Search
+* Time Complexity : 
+    - Worst : __O(log n)__
+    - Average : __O(log n)__
+    - Best : __O(1)__ -> when the target element is found at the middle of the array.
+
+Binary search quickly finds a target value in a sorted array by repeatedly dividing the search range in half and checking the middle element, reducing the search area each time. 
+
+```js
+const arr = [1,2,3,4,5,6,7,8]; // Sorted Array
+let target = 7; // Target Element
+
+let startIndex = 0;
+let endIndex = arr.length - 1;
+let midIndex; 
+let found = false;
+
+while(startIndex <= endIndex){
+    // O(log_2 n)
+    midIndex = Math.floor((startIndex+endIndex)/2); // takes minimum nearest integer
+
+    if (arr[midIndex] == target){
+        found = true;
+        break;
+    }
+    else if (arr[midIndex] < target){
+        startIndex = midIndex+1;
+    }
+    else{
+        endIndex = midIndex-1;
+    }
+}
+
+if (found){
+    console.log("Element found at index: " + midIndex); // Element found at index: 6
+}
+else{
+    console.log("Element Not Found");
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary>Stack</summary>
+
+## Stack
+A stack is a linear data structure that follows the First-In-Last-Out (FILO) principle.
+*  FILO : First In Last Out
+
+![Stack](./Assets/04-stack/01-stack.png)
+
+### Example
+* Pushing an element onto the stack is like adding a new plate on top.
+* Popping an element removes the top plate from the stack.
+
+### Operations
+* push: Adds an element to the top of the stack.
+* peek: Returns the top element without removing it.
+* pop: Removes the top element from the stack.
+
+```js
+// Stack
+
+/*
+Data Structure : Stack -> FILO
+
+Methods:
+    * push() -> Add an item to the top of the stack
+    * display() 
+    * size()
+    * isEmpty()
+    * peek() -> Peeks at the top item of the stack without removing it
+    * pop() -> Removes at the top item of the stack
+*/
+
+
+class Stack{
+    constructor(){
+        this.items = []
+    }
+
+    push(item){
+        this.display().push(item)
+    }
+
+    display(){
+        return this.items
+    }
+
+    size(){
+        return this.display().length
+    }
+
+    isEmpty(){
+        return this.size() ===  0
+    }
+
+    peek(){
+        // Return the top item without removing it
+        if (this.isEmpty()){
+            return null
+        }
+        else{
+            const topItem = this.display()[this.size()-1]
+            return topItem;
+        }
+    }
+
+    pop(){
+        if (this.isEmpty()){
+            return null
+        }
+        else{
+            let poppedItem = this.display().pop()
+            return poppedItem
+        }
+    }
+}
+
+
+// Instance
+const stack = new Stack();
+console.log(stack)
+
+stack.push("data1")
+console.log(stack.display())
+
+stack.push("data2")
+stack.push("data3")
+stack.push("data4")
+
+console.log(stack.display())
+
+console.log(stack.isEmpty())
+
+console.log(stack.size())
+
+console.log(stack.peek())
+
+console.log(stack.pop())
+
+console.log(stack.size())
+
+console.log(stack.display())
+```
+
+</details>
+
+---
+
+<details>
+ <summary>Queue</summary>
+
+## Queue
+A Queue is a linear data structure that follows the First-In-First-Out (FIFO) principle.
+* FIFO : First In First Out
+  ![Queue](./Assets/05-queue/01-queue.png)
+  ![Queue vs Stack](./Assets/05-queue/02-queue-vs-stack.png)
+
+### Methods
+* enqueue (Insert): Adds an element to the rear of the queue.
+* Peek: Returns the element at the front of the queue without removing it.
+* dequeue (Delete): Removes and returns the element from the front of the queue.
+
+```js
+// Queue
+
+/*
+Data Structure : Queue -> FIFO
+
+Methods :
+    * enqueue() -> Add an item to the top of the queue
+    * display()
+    * size()
+    * isEmpty()
+    * peek() -> Peeks at the first item of the queue without removing it
+    * dequeue() -> Removes at the first element of the queue
+*/
+
+class Queue{
+    constructor(){
+        this.items = []
+    }
+
+    enqueue(item){
+        this.display().push(item)
+    }
+
+    display(){
+        return this.items
+    }
+
+    size(){
+        return this.display().length
+    }
+
+    isEmpty(){
+        return this.size() === 0
+    }
+
+    peek(){
+        if (this.isEmpty()) {
+            return null
+        }
+        else{
+            const firstItem = this.display()[0]
+            return firstItem
+        }
+    }
+
+    dequeue(){
+        if (this.isEmpty()) {
+            return null
+        }
+        else{
+            const shiftedItem = this.display().shift()
+            return shiftedItem
+        }
+    }
+}
+
+// Instance
+const queue = new Queue();
+console.log(queue)
+
+queue.enqueue("data1")
+console.log(queue)
+
+console.log(queue.display())
+
+queue.enqueue("data2")
+queue.enqueue("data3")
+queue.enqueue("data4")
+
+console.log(queue.display())
+console.log(queue.peek())
+
+console.log(queue.size())
+console.log(queue.dequeue())
+
+console.log(queue.display())
+
+console.log(queue.dequeue())
+
+console.log(queue.display())
+```
+
+</details>
+
+---
+
+<details>
+<summary>LinkedList</summary>
+
+## LinkedList
+A __linkedList__ is a linear data structure which can store a collection of "nodes" connected together via links. 
+* Every node consists of the data and next (address of the next node). 
+* we no need to assign a memory in advance.
+* Dynamic memory allocation
+
+![Linked List](./Assets/06-linked-list/01-linkedlist.png)
+
+![Linked List](./Assets/06-linked-list/02-linked-list.png)
+
+### Disadvantages 
+Access Time: Elements must be accessed sequentially, making random access time linear O(n).
+
+### Types of LinkedLists
+* Singly LinkedList: Each node points to the next node in the sequence.
+* Doubly LinkedList: Each node has two references, one to the next node and one to the previous node. we can traverse in in both forward and backward directions.
+* Circular LinkedList: The last node points back to the first node, forming a circle.
+
+#### Singly LinkedList
+In a singly linked list, each node typically has two components
+* Data: The value stored in the node.
+* Next: A reference to the next node in the list.
+
+```js 
+// LinkedList
+
+/*
+Data Structure : LinkedList -> Create linked Nodes
+
+Every Node Contains data & next (reference link for next node)
+*/
+
+// Node Template
+class Node{
+    constructor(data){
+        this.data = data;
+        this.next = null
+    }
+}
+
+// create node instances
+const node1 = new Node("data1");
+console.log(node1)
+
+const node2 = new Node("data2");
+console.log(node2)
+
+const node3 = new Node("data3")
+console.log(node3)
+
+console.log("--------------")
+
+/* ------> LinkedList <----- */
+// connect the nodes
+const head = node1;  // The head is where we start
+node1.next = node2;
+node2.next = node3;
+
+console.log(head)
+
+console.log("--------------")
+
+/* -----> Traverse on Each Node <----- */
+let current = head;
+while (current){
+    // current !==null
+    console.log(current.data)
+    current = current.next
+} 
+
+console.log("==========")
+```
+
+</details>
+
+---
+
+<details>
+<summary>HashTable</summary>
+
+## HashTable
+A HashTable is a data structure that stores key-value pairs  and retrieve a key-value pairs very quickly. It's like a special kind of dictionary.
+* It is designed to provide fast insertion, deletion, and retrieval of elements based on their keys.
+* A hash table is a data structure that organizes data using a technique called hashing. 
+* It stores key-value pairs, where each key is unique. When we want to store or retrieve a value, we use a hash function to convert the key into an index in an array. 
+* This allows us to quickly locate the value associated with a given key without needing to search through the entire collection.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary>Rough</summary>
+
+## Rough
 
 ### Selection Sort
 * Data Structure: Array
@@ -310,35 +802,6 @@ for loop to run length of array:
         if parent loop number is greater than child loop number:
             update small_number_index to child loop number index
     Swap their positions
-
-print the output
-```
-
-### Insertion Sort
-* Data Structure: Array
-* Algorithm: Insertion Sort
-* Time Complexity
-    - Worst: O(n^2)
-    - Average: O(n^2)
-    - Best: O(n) -> when the array is already sorted
-
-Insertion sort (move to backward direction) iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list. 
-
-![Insertion Sort](./Assets/02-sorting/sorting-images/03-insertion-sort.webp)
-
-<video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
-
-```js
-Unordered array
-
-for loop to run length of array:
-    save the current element as small_number
-    for loop to run backwards length of the array:
-        // O(n^2)
-        if small_number < current element in the sorted portion:
-            move the current element one position to the left
-        else:
-        break the loop
 
 print the output
 ```
@@ -382,142 +845,4 @@ recursive function with arr as parameter:
 call the quickSort with arr as parameter
 print the output
 ```
-</details>
-
----
-
-<details>
-<summary>Searching</summary>
-
-## Searching
-* Linear 
-* Binary
-
-### Linear
-* Data Structure: Array
-* Algorithm: Linear Search
-* Time Complexity
-    - Worst : O(n)
-    - Average : O(n)
-    - Best: O(1) -> when the target element is found at the beginning of the array.
-
-Linear search checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
-
-```js 
-Unordered array
-target value
-
-for loop to run length of array:
-    if found the target value:
-        print the output
-        break the loop
-```
-
-### Binary
-* Data Structure: Array
-* Algorithm: Binary Search
-* Time Complexity : 
-    - Worst : O(log n)
-    - Average : O(log n)
-    - Best : O(1) when the target element is found at the middle of the array.
-
-Binary search quickly finds a target value in a sorted array by repeatedly dividing the search range in half and checking the middle element, reducing the search area each time. This method is much faster than linear search.
-
-
-```js
-ordered array
-target value
-
-leftIndex
-rightIndex
-midIndex
-
-while to run upto midValue equals to target:
-    if target equal to midValue:
-        print the output
-        break the loop
-    
-    if target is lower than midValue:
-        update rightIndex to midIndex
-    else target is greater than midValue: 
-        update leftIndex to midIndex   
-
-    update midIndex
-```
-</details>
-
----
-
-<details>
-<summary>Stack</summary>
-
-## Stack
-A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle.
-*  LIFO : Last In First Out
-
-![Stack](./Assets/04-stack/01-stack.png)
-
-### Example
-* Pushing an element onto the stack is like adding a new plate on top.
-* Popping an element removes the top plate from the stack.
-
-### Operations
-* Push: Adds an element to the top of the stack.
-* Pop: Removes the top element from the stack.
-* Peek: Returns the top element without removing it.
-* IsEmpty: Checks if the stack is empty.
-* IsFull: Checks if the stack is full (in case of fixed-size arrays).
-
-</details>
-
----
-
-<details>
- <summary>Queue</summary>
-
-  ## Queue
-  A queue can be defined as an ordered list which enables insert operations to be performed at one end called REAR and delete operations to be performed at another end called FRONT.
- A queue is a data structure in which whatever comes first will go out first
-* FIFO : First In First Out
-  ![Queue](./Assets/05-queue/01-queue.png)
-  ![Queue vs Stack](./Assets/05-queue/02-queue-vs-stack.png)
-
-### Methods
-* Enqueue (Insert): Adds an element to the rear of the queue.
-* Dequeue (Delete): Removes and returns the element from the front of the queue.
-* Peek: Returns the element at the front of the queue without removing it.
-* Empty: Checks if the queue is empty.
-* Full: Checks if the queue is full.
-
-</details>
-
----
-
-<details>
-<summary>LinkedList</summary>
-
-## LinedList
-A linked list is a linear data structure which can store a collection of "nodes" connected together via links . A node consists of the data and next (address of the next node). 
-
-* we no need to assign a memory in advance.
-* Dynamic memory allocation
-
-![Linked List](./Assets/06-linked-list/01-linkedlist.png)
-
-![Linked List](./Assets/06-linked-list/02-linked-list.png)
-
-
-### Types of Linked Lists
-* Singly Linked List: Each node points to the next node in the sequence.
-* Doubly Linked List: Each node has two references, one to the next node and one to the previous node.
-* Circular Linked List: The last node points back to the first node, forming a circle.
-
-
-### Basic Structure of Node
-In a singly linked list, each node typically has two components
-* Data: The value stored in the node.
-* Next: A reference to the next node in the list.
-
-
-
 </details>
