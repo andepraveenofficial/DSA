@@ -205,7 +205,7 @@ Quadratically : n input size
 
 - [1] -> (1\*1) -> 1 Iterations
 - [1,2] -> (2\*2) -> 4 Iterations
-- [1,2,3] -> (3\*3) -> 9 Iterations
+- [1,2,3] -> (3\*2) -> 9 Iterations
 
   ```js
   // Nested Loops
