@@ -6,26 +6,23 @@ let square_root = 26;
 
 let left = 0;
 let right = square_root;
-let mid = (left+right) / 2
-console.log(mid)
+let mid = (left + right) / 2;
+console.log(mid);
 
-while(true){
-    if (mid*mid === square_root){
-        console.log(mid)
-        break;
+while (true) {
+  if (mid * mid === square_root) {
+    console.log(mid);
+    break;
+  } else {
+    console.log(mid * mid);
+    if (mid * mid < square_root) {
+      left = mid;
+    } else {
+      right = mid;
     }
-    else{
-        console.log(mid*mid)
-        if (mid*mid < square_root){
-            left = mid
-        }
-        else{
-            right = mid
-        }
-        mid = (left+right) / 2
-    }
+    mid = (left + right) / 2;
+  }
 }
-
 
 /*
 // General Method

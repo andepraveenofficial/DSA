@@ -1,5 +1,4 @@
-// 2^x = 16 
-
+// 2^x = 16
 
 /*
 const fixed = 2;
@@ -20,7 +19,6 @@ if (number === fixed){
 console.log(output)
 
 */
-
 
 /*
 const fixed = 2;
@@ -52,7 +50,6 @@ while ((fixed**mid) >= number){
 
 console.log(output)
 */
-
 
 /*
 const fixed = 2;

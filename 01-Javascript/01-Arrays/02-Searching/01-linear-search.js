@@ -10,26 +10,25 @@ Time Complexity :
     Best : O(1) -> when the target element is found at the beginning of the array.
 
 Approach : 
-checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
-*/
+ - checks each element in a list one by one for the target value, returning its index if found or "Not Found" otherwise. 
+ - Searching for an element in an unsorted array requires checking each element one by one until the target is found.
+ */
 
-
-const arr = [2,1,5,8,4,3,7,6];
+const arr = [2, 1, 5, 8, 4, 3, 7, 6];
 const target = 3;
 console.log(arr, target);
 
-console.log("------------")
+console.log("------------");
 
 let output = null;
-for (let i=0; i<arr.length; i++){
-    // O(n)
-    if (arr[i] === target){
-        output = i;
-        break;
-    }
+for (let i = 0; i < arr.length; i++) {
+  // O(n)
+  if (arr[i] === target) {
+    output = i;
+    break;
+  }
 }
 
-console.log("Element found at index: " + output);  // Element found at index: 5
+console.log("Element found at index: " + output); // Element found at index: 5
 
-console.log("===============")
-
+console.log("===============");
