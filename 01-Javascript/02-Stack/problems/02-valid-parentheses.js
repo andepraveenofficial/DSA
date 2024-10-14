@@ -13,50 +13,45 @@ Methods :
 
 */
 
-class Stack{
-    constructor(){
-        this.items = []
-    }
+class Stack {
+  constructor() {
+    this.items = [];
+  }
 
-    push(item){
-        this.display().push(item)
-    }
+  push(item) {
+    this.display().push(item);
+  }
 
-    display(){
-        return this.items
-    }
+  display() {
+    return this.items;
+  }
 
-    size(){
-        return this.display().length
-    }
+  size() {
+    return this.display().length;
+  }
 
-    isEmpty(){
-        return this.size() === 0
-    }
+  isEmpty() {
+    return this.size() === 0;
+  }
 
-    peek(){
-        if (this.isEmpty()){
-            return null
-        }
-        else{
-            const topItem = this.display()[this.size() - 1]
-            return topItem
-        }
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      const topItem = this.display()[this.size() - 1];
+      return topItem;
     }
+  }
 
-    pop(){
-        if (this.isEmpty()){
-            return null
-        }
-        else{
-            const poppedItem = this.display().pop()
-            return poppedItem;
-        }
+  pop() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      const poppedItem = this.display().pop();
+      return poppedItem;
     }
+  }
 }
-
-
-
 
 /* -------> problem Start <------- */
 
@@ -70,34 +65,32 @@ A string is valid if brackets are closed in the correct order and match their ty
 
 const str = "(()[]{}){}";
 
-// Instance 
-const stack = new Stack()
+// Instance
+const stack = new Stack();
 const openAndClose = {
-    "{":"}",
-    "[":"]",
-    "(":")"
-}
+  "{": "}",
+  "[": "]",
+  "(": ")",
+};
 
-const opening = "{[("
+const opening = "{[(";
 
 let output;
-for (let bracket of str){
-    if (opening.includes(bracket)){
-        stack.push(bracket)
+for (let bracket of str) {
+  if (opening.includes(bracket)) {
+    stack.push(bracket);
+  } else {
+    if (stack.isEmpty()) {
+      output = "Not Valid";
+      break;
+    } else {
+      const peekItem = stack.peek();
+      if (openAndClose[peekItem] === bracket) {
+        stack.pop();
+        output = "Valid";
+      }
     }
-    else{
-        if (stack.isEmpty()){
-            output = "Not Valid"
-            break;
-        }
-        else{
-            const peekItem = stack.peek();
-            if (openAndClose[peekItem] === bracket){
-                stack.pop()
-                output = "Valid"
-            }
-        }
-    }
+  }
 }
 
 console.log(output); // Valid

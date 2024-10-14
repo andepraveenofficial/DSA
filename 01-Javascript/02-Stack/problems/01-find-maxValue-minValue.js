@@ -15,106 +15,95 @@ Approach :
 store the every value with minValueIndex & maxValueIndex in the stack.
 */
 
-class Stack{
-    constructor(){
-        this.items = [];
-        this.maxValueIndex = null;
-        this.minValueIndex = null;
+class Stack {
+  constructor() {
+    this.items = [];
+    this.maxValueIndex = null;
+    this.minValueIndex = null;
+  }
+
+  push(item) {
+    if (this.isEmpty()) {
+      this.maxValueIndex = 0;
+      this.minValueIndex = 0;
+    } else {
+      const maxValue = this.display()[this.maxValueIndex].value;
+      const minValue = this.display()[this.minValueIndex].value;
+      //  console.log(maxValue, minValue)
+
+      if (item >= maxValue) {
+        this.maxValueIndex = this.size();
+      }
+
+      if (item <= minValue) {
+        this.minValueIndex = this.size();
+      }
     }
+    const addItem = {
+      value: item,
+      maxValueIndex: this.maxValueIndex,
+      minValueIndex: this.minValueIndex,
+    };
 
-    push(item){
-        if(this.isEmpty()){
-            this.maxValueIndex = 0;
-            this.minValueIndex = 0;
-        }
-        else{
-         const maxValue = this.display()[this.maxValueIndex].value
-         const minValue = this.display()[this.minValueIndex].value
-        //  console.log(maxValue, minValue)
+    this.items.push(addItem);
+  }
 
-         if(item >= maxValue){
-            this.maxValueIndex = this.size()
-         }
+  display() {
+    return this.items;
+  }
 
-         if (item <= minValue){
-            this.minValueIndex = this.size()
-         }
-       }
-       const addItem = {
-        value:item,
-        maxValueIndex: this.maxValueIndex,
-        minValueIndex: this.minValueIndex
-     }
+  size() {
+    return this.display().length;
+  }
 
-     this.items.push(addItem)
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      const topItem = this.display()[this.size() - 1];
+      return topItem;
     }
+  }
 
-    display(){
-        return this.items
+  getMaxValue() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      const maxValue = this.display()[this.peek().maxValueIndex].value;
+      return maxValue;
     }
+  }
 
-    size(){
-        return this.display().length
+  getMinValue() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      const minValue = this.display()[this.peek().minValueIndex].value;
+      return minValue;
     }
-
-    isEmpty(){
-        return this.size() === 0
-    }
-
-    peek(){
-        if (this.isEmpty()){
-            return null
-        }
-        else{
-            const topItem = this.display()[this.size() - 1]
-            return topItem
-        }
-        
-    }
-
-    getMaxValue(){
-        if(this.isEmpty()){
-            return null
-        }
-        else{
-            const maxValue = this.display()[this.peek().maxValueIndex].value;
-            return maxValue
-        }
-    }
-
-    getMinValue(){
-        if(this.isEmpty()){
-            return null
-        }
-        else{
-            const minValue = this.display()[this.peek().minValueIndex].value;
-            return minValue
-        }
-    }
+  }
 }
-
 
 // Instance
 
 let stack = new Stack();
-console.log(stack)
+console.log(stack);
 
-stack.push(10)
-console.log(stack.display())
+stack.push(10);
+console.log(stack.display());
 
-stack.push(70)
-stack.push(30)
-stack.push(50)
-stack.push(250)
-stack.push(5)
-console.log(stack.display())
+stack.push(70);
+stack.push(30);
+stack.push(50);
+stack.push(250);
+stack.push(5);
+console.log(stack.display());
 
-console.log(stack.peek())
+console.log(stack.peek());
 
-
-console.log(stack.getMaxValue())
-console.log(stack.getMinValue())
-
-
-
-
+console.log(stack.getMaxValue());
+console.log(stack.getMinValue());

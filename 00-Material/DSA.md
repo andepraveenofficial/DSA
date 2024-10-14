@@ -355,6 +355,96 @@ for (let i = 0; i < arr.length; i++) {
 console.log(arr); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 ```
 
+#### Selection Sort
+
+- Data Structure: Array
+- Algorithm: Selection Sort
+- Time Complexity
+  - Worst: **O(n^2)**
+  - Average: **O(n^2)**
+  - Best: **O(n^2)**
+
+It repeatedly selects the smallest element from the unsorted part and swaps it with the element at the beginning of the unsorted part. This process continues until the entire list is sorted. The algorithm has a time complexity of O(n^2).
+
+![Selection Sort](./Assets/02-sorting/sorting-images/02-selection-sort.png)
+
+<video src="./Assets/02-sorting/02-selection-sort.mp4" controls></video>
+
+```js
+const arr = [2, 1, 5, 8, 4, 3, 7, 6];
+
+for (let i = 0; i < arr.length - 1; i++) {
+  let minIndex = i;
+
+  for (let j = i + 1; j < arr.length; j++) {
+    if (arr[j] < arr[minIndex]) {
+      minIndex = j;
+    }
+  }
+
+  // Swap
+  if (minIndex !== i) {
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+  }
+}
+
+console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+#### Quick Sort
+
+- Data Structure: Array
+- Algorithm: Quick Sort
+- Time Complexity
+  - Worst: **O(n^2)**
+  - Average: **O(n log n)**
+  - Best: **O(n log n)**
+
+Quick Sort selects a pivot, divides the array into smaller and larger elements, recursively sorts these partitions, and combines them with the pivot to obtain a sorted array.
+
+![Quick Sort](./Assets/02-sorting/sorting-images/04-quick-sort.png)
+
+<video src="./Assets/02-sorting/04-quick-sort.mp4" controls></video>
+
+```js
+let arr = [2, 1, 5, 8, 4, 3, 7, 6];
+
+function quickSort(arr) {
+  // Time Complexity -> n log n
+
+  if (arr.length <= 1) {
+    return arr; // Base Condition
+  }
+
+  const pivot = arr[0];
+
+  let leftArray = []; // lesser values
+  let rightArray = []; // greater values
+  let equalArray = []; // equal values -> Sometimes duplicate pivot
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      leftArray.push(arr[i]);
+    } else if (arr[i] > pivot) {
+      rightArray.push(arr[i]);
+    } else {
+      equalArray.push(arr[i]);
+    }
+  }
+
+  const result = [
+    ...quickSort(leftArray),
+    ...equalArray,
+    ...quickSort(rightArray),
+  ];
+  return result;
+}
+
+const output = quickSort(arr);
+
+console.log("Sorted array:", output);
+```
+
 ### Searching
 
 - Linear Search
@@ -855,80 +945,3 @@ A HashTable is a data structure that stores key-value pairs and retrieve a key-v
 </details>
 
 ---
-
-<details>
-<summary>Rough</summary>
-
-## Rough
-
-### Selection Sort
-
-- Data Structure: Array
-- Algorithm: Selection Sort
-- Time Complexity
-  - Worst: O(n^2)
-  - Average: O(n^2)
-  - Best: O(n^2)
-
-It repeatedly selects the smallest element from the unsorted part and swaps it with the element at the beginning of the unsorted part. This process continues until the entire list is sorted. The algorithm has a time complexity of O(n^2).
-
-![Selection Sort](./Assets/02-sorting/sorting-images/02-selection-sort.png)
-
-<video src="./Assets/02-sorting/02-selection-sort.mp4" controls></video>
-
-```js
-Unordered array
-
-for loop to run length of array:
-    take small_number_index from parent for loop
-    for loop to run length of array:
-        // O(n^2)
-        if parent loop number is greater than child loop number:
-            update small_number_index to child loop number index
-    Swap their positions
-
-print the output
-```
-
-### Quick Sort
-
-- Data Structure: Array
-- Algorithm: Quick Sort
-- Time Complexity
-  - Worst: O(n^2)
-  - Average: O(n log n)
-  - Best: O(n log n)
-
-Quick Sort selects a pivot, divides the array into smaller and larger elements, recursively sorts these partitions, and combines them with the pivot to obtain a sorted array.
-
-![Quick Sort](./Assets/02-sorting/sorting-images/04-quick-sort.png)
-
-<video src="./Assets/02-sorting/04-quick-sort.mp4" controls></video>
-
-```js
-Unordered array
-
-recursive function with arr as parameter:
-  if arr length <= 1:
-        return arr
-
-  Choose a pivot element from the array (typically the first element)
-
-  leftArray
-  rigghtArray
-  eaquaArray
-
-  for loop to run length of array:
-    - values less than the pivot are placed to the leftArray
-    - values greater than the pivot are placed to the rightArray
-    - values equal to the pivot are placed to the equalArray
-
-  Recursively apply Quick Sort to the left and right subarrays
-
-  Combine the sorted subarrays to form the final sorted array
-
-call the quickSort with arr as parameter
-print the output
-```
-
-</details>
