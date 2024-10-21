@@ -83,8 +83,8 @@ Task : Find the sum of the first n natural numbers.
 const n = 10000000;
 let sum = 0;
 for (let i = 1; i <= n; i++) {
-  // O(n)
-  sum += i;
+	// O(n)
+	sum += i;
 }
 console.log(sum);
 ```
@@ -134,8 +134,7 @@ console.log(sum);
 2. Linear Time
 3. Quadratic Time
 4. Logarithmic Time
-5. Sorting
-6. Recursion
+5. Recursion
 
 ### Constant Time **O(1)**
 
@@ -191,8 +190,8 @@ Linear time complexity means that as the input size increases, the algorithm's r
 const arr = [1, 2, 3, 4, 5];
 let total = 0;
 for (let i = 0; i < arr.length; i++) {
-  // O(n)
-  total += arr[i];
+	// O(n)
+	total += arr[i];
 }
 console.log(total);
 ```
@@ -205,17 +204,17 @@ Quadratically : n input size
 
 - [1] -> (1\*1) -> 1 Iterations
 - [1,2] -> (2\*2) -> 4 Iterations
-- [1,2,3] -> (3\*2) -> 9 Iterations
+- [1,2,3] -> (3\*3) -> 9 Iterations
 
   ```js
   // Nested Loops
 
   const arr = [1, 2, 3, 4, 5];
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      // O(n^2)
-      console.log(arr[i], arr[j]);
-    }
+  	for (let j = 0; j < arr.length; j++) {
+  		// O(n^2)
+  		console.log(arr[i], arr[j]);
+  	}
   }
   ```
 
@@ -244,10 +243,10 @@ it means that as the size of the input increases, the time it takes to run the f
 ```js
 // Factorial
 function factorial(n) {
-  if (n <= 1) {
-    return 1;
-  }
-  return n * factorial(n - 1);
+	if (n <= 1) {
+		return 1;
+	}
+	return n * factorial(n - 1);
 }
 
 const result = factorial(5);
@@ -303,18 +302,18 @@ Bubble sort compares adjacent elements in a list, swapping them if they're in th
 const arr = [2, 1, 5, 8, 4, 3, 7, 6];
 
 for (let i = 0; i < arr.length; i++) {
-  let isSorted = true;
-  for (let j = 0; j < arr.length - 1; j++) {
-    // O(n^2)
-    if (arr[j] > arr[j + 1]) {
-      isSorted = false;
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-    }
-  }
+	let isSorted = true;
+	for (let j = 0; j < arr.length - 1; j++) {
+		// O(n^2)
+		if (arr[j] > arr[j + 1]) {
+			isSorted = false;
+			[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+		}
+	}
 
-  if (isSorted) {
-    break;
-  }
+	if (isSorted) {
+		break;
+	}
 }
 
 console.log(arr); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
@@ -331,7 +330,7 @@ console.log(arr); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 
 Insertion sort (move to backward direction) iteratively inserts each element from an unsorted list into its correct position within a sorted portion of the list.
 
-![Insertion Sort](./Assets/02-sorting/sorting-images/03-insertion-sort.webp)
+![Insertion Sort](./Assets/02-sorting/sorting-images/03-insertion-sort.png)
 
 <video src="./Assets/02-sorting/03-insertion-sort.mp4" controls></video>
 
@@ -339,17 +338,17 @@ Insertion sort (move to backward direction) iteratively inserts each element fro
 const arr = [2, 1, 5, 8, 4, 3, 7, 6];
 
 for (let i = 0; i < arr.length; i++) {
-  const item = arr[i];
-  let j = i - 1;
+	const item = arr[i];
+	let j = i - 1;
 
-  while (j >= 0 && item < arr[j]) {
-    // O(n)
-    arr[j + 1] = arr[j];
-    console.log(arr);
-    j--;
-  }
+	while (j >= 0 && item < arr[j]) {
+		// O(n)
+		arr[j + 1] = arr[j];
+		console.log(arr);
+		j--;
+	}
 
-  arr[j + 1] = item;
+	arr[j + 1] = item;
 }
 
 console.log(arr); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
@@ -374,18 +373,18 @@ It repeatedly selects the smallest element from the unsorted part and swaps it w
 const arr = [2, 1, 5, 8, 4, 3, 7, 6];
 
 for (let i = 0; i < arr.length - 1; i++) {
-  let minIndex = i;
+	let minIndex = i;
 
-  for (let j = i + 1; j < arr.length; j++) {
-    if (arr[j] < arr[minIndex]) {
-      minIndex = j;
-    }
-  }
+	for (let j = i + 1; j < arr.length; j++) {
+		if (arr[j] < arr[minIndex]) {
+			minIndex = j;
+		}
+	}
 
-  // Swap
-  if (minIndex !== i) {
-    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
-  }
+	// Swap
+	if (minIndex !== i) {
+		[arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+	}
 }
 
 console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8]
@@ -410,34 +409,34 @@ Quick Sort selects a pivot, divides the array into smaller and larger elements, 
 let arr = [2, 1, 5, 8, 4, 3, 7, 6];
 
 function quickSort(arr) {
-  // Time Complexity -> n log n
+	// Time Complexity -> n log n
 
-  if (arr.length <= 1) {
-    return arr; // Base Condition
-  }
+	if (arr.length <= 1) {
+		return arr; // Base Condition
+	}
 
-  const pivot = arr[0];
+	const pivot = arr[0];
 
-  let leftArray = []; // lesser values
-  let rightArray = []; // greater values
-  let equalArray = []; // equal values -> Sometimes duplicate pivot
+	let leftArray = []; // lesser values
+	let rightArray = []; // greater values
+	let equalArray = []; // equal values -> Sometimes duplicate pivot
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < pivot) {
-      leftArray.push(arr[i]);
-    } else if (arr[i] > pivot) {
-      rightArray.push(arr[i]);
-    } else {
-      equalArray.push(arr[i]);
-    }
-  }
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] < pivot) {
+			leftArray.push(arr[i]);
+		} else if (arr[i] > pivot) {
+			rightArray.push(arr[i]);
+		} else {
+			equalArray.push(arr[i]);
+		}
+	}
 
-  const result = [
-    ...quickSort(leftArray),
-    ...equalArray,
-    ...quickSort(rightArray),
-  ];
-  return result;
+	const result = [
+		...quickSort(leftArray),
+		...equalArray,
+		...quickSort(rightArray),
+	];
+	return result;
 }
 
 const output = quickSort(arr);
@@ -467,11 +466,11 @@ const target = 3;
 
 let output = null;
 for (let i = 0; i < arr.length; i++) {
-  // O(n)
-  if (arr[i] === target) {
-    output = i;
-    break;
-  }
+	// O(n)
+	if (arr[i] === target) {
+		output = i;
+		break;
+	}
 }
 
 console.log("Element found at index: " + output); // Element found at index: 5
@@ -498,23 +497,23 @@ let midIndex;
 let found = false;
 
 while (startIndex <= endIndex) {
-  // O(log_2 n)
-  midIndex = Math.floor((startIndex + endIndex) / 2); // takes minimum nearest integer
+	// O(log_2 n)
+	midIndex = Math.floor((startIndex + endIndex) / 2); // takes minimum nearest integer
 
-  if (arr[midIndex] == target) {
-    found = true;
-    break;
-  } else if (arr[midIndex] < target) {
-    startIndex = midIndex + 1;
-  } else {
-    endIndex = midIndex - 1;
-  }
+	if (arr[midIndex] == target) {
+		found = true;
+		break;
+	} else if (arr[midIndex] < target) {
+		startIndex = midIndex + 1;
+	} else {
+		endIndex = midIndex - 1;
+	}
 }
 
 if (found) {
-  console.log("Element found at index: " + midIndex); // Element found at index: 6
+	console.log("Element found at index: " + midIndex); // Element found at index: 6
 } else {
-  console.log("Element Not Found");
+	console.log("Element Not Found");
 }
 ```
 
@@ -560,44 +559,44 @@ Methods:
 */
 
 class Stack {
-  constructor() {
-    this.items = [];
-  }
+	constructor() {
+		this.items = [];
+	}
 
-  push(item) {
-    this.display().push(item);
-  }
+	push(item) {
+		this.display().push(item);
+	}
 
-  display() {
-    return this.items;
-  }
+	display() {
+		return this.items;
+	}
 
-  size() {
-    return this.display().length;
-  }
+	size() {
+		return this.display().length;
+	}
 
-  isEmpty() {
-    return this.size() === 0;
-  }
+	isEmpty() {
+		return this.size() === 0;
+	}
 
-  peek() {
-    // Return the top item without removing it
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      const topItem = this.display()[this.size() - 1];
-      return topItem;
-    }
-  }
+	peek() {
+		// Return the top item without removing it
+		if (this.isEmpty()) {
+			return null;
+		} else {
+			const topItem = this.display()[this.size() - 1];
+			return topItem;
+		}
+	}
 
-  pop() {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      let poppedItem = this.display().pop();
-      return poppedItem;
-    }
-  }
+	pop() {
+		if (this.isEmpty()) {
+			return null;
+		} else {
+			let poppedItem = this.display().pop();
+			return poppedItem;
+		}
+	}
 }
 
 // Instance
@@ -663,43 +662,43 @@ Methods :
 */
 
 class Queue {
-  constructor() {
-    this.items = [];
-  }
+	constructor() {
+		this.items = [];
+	}
 
-  enqueue(item) {
-    this.display().push(item);
-  }
+	enqueue(item) {
+		this.display().push(item);
+	}
 
-  display() {
-    return this.items;
-  }
+	display() {
+		return this.items;
+	}
 
-  size() {
-    return this.display().length;
-  }
+	size() {
+		return this.display().length;
+	}
 
-  isEmpty() {
-    return this.size() === 0;
-  }
+	isEmpty() {
+		return this.size() === 0;
+	}
 
-  peek() {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      const firstItem = this.display()[0];
-      return firstItem;
-    }
-  }
+	peek() {
+		if (this.isEmpty()) {
+			return null;
+		} else {
+			const firstItem = this.display()[0];
+			return firstItem;
+		}
+	}
 
-  dequeue() {
-    if (this.isEmpty()) {
-      return null;
-    } else {
-      const shiftedItem = this.display().shift();
-      return shiftedItem;
-    }
-  }
+	dequeue() {
+		if (this.isEmpty()) {
+			return null;
+		} else {
+			const shiftedItem = this.display().shift();
+			return shiftedItem;
+		}
+	}
 }
 
 // Instance
@@ -775,10 +774,10 @@ Every Node Contains data & next (reference link for next node)
 
 // Node Template
 class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
+	constructor(data) {
+		this.data = data;
+		this.next = null;
+	}
 }
 
 // create node instances
@@ -806,9 +805,9 @@ console.log("--------------");
 /* -----> Traverse on Each Node <----- */
 let current = head;
 while (current) {
-  // current !==null
-  console.log(current.data);
-  current = current.next;
+	// current !==null
+	console.log(current.data);
+	current = current.next;
 }
 
 console.log("==========");
@@ -900,14 +899,14 @@ console.log("-------------");
 
 // Iterating using for-loop
 for (let [key, value] of mymap) {
-  console.log(key, value);
+	console.log(key, value);
 }
 
 console.log("----------");
 
 // Iterating using forEach
 mymap.forEach((value, key) => {
-  console.log(key, value);
+	console.log(key, value);
 });
 
 console.log("--------------");
