@@ -63,34 +63,42 @@ Given a string containing '(', ')', '{', '}', '[', and ']', determine if it is v
 A string is valid if brackets are closed in the correct order and match their types.	
 */
 
-const str = "(()[]{}){}";
+const parentheses = "{}[]()";
+console.log("--------------");
 
-// Instance
-const stack = new Stack();
-const openAndClose = {
+const opening = "{[(";
+const closing = ")]}";
+
+const obj = {
   "{": "}",
   "[": "]",
   "(": ")",
 };
 
-const opening = "{[(";
+// Instance
+const stack = new Stack();
 
-let output;
-for (let bracket of str) {
+let output = "Yes";
+for (let i = 0; i < parentheses.length; i++) {
+  const bracket = parentheses[i];
   if (opening.includes(bracket)) {
     stack.push(bracket);
   } else {
-    if (stack.isEmpty()) {
-      output = "Not Valid";
-      break;
+    const peekItem = stack.peek();
+    if (peekItem === bracket) {
+      stack.pop();
     } else {
-      const peekItem = stack.peek();
-      if (openAndClose[peekItem] === bracket) {
-        stack.pop();
-        output = "Valid";
-      }
+      output = "No";
+      break;
     }
   }
 }
 
-console.log(output); // Valid
+if (!stack.isEmpty()) {
+  output = "Yes";
+} else {
+  output = "No";
+}
+
+console.log(output);
+console.log("======================");
